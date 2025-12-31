@@ -11,7 +11,7 @@ const Somecar = () => {
       >
         <p className="p-3 text-2xl ml-8 mt-5">some of our cars</p>
 
-        <div className="flex gap-5 overflow-x-scroll p-3">
+        <div className="flex gap-5 overflow-x-scroll no-scrollbar p-3">
           {cardata.map((data, i) => {
             return (
               <div key={i} className="w-90 border rounded-lg h-72">

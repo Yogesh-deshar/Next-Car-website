@@ -4,12 +4,14 @@ export default function HomeLayout({
   aboutsection,
   someofourcar,
   aboutussection,
+  partnersection
 }: Readonly<{
   children: React.ReactNode;
   herosection: React.ReactNode;
   aboutsection: React.ReactNode;
   someofourcar: React.ReactNode;
   aboutussection: React.ReactNode;
+  partnersection: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -19,6 +21,7 @@ export default function HomeLayout({
         <div>{aboutsection}</div>
         <div>{someofourcar}</div>
         <div>{aboutussection}</div>
+        <div>{partnersection}</div>
       </body>
     </html>
   );

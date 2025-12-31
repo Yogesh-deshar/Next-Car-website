@@ -12,7 +12,7 @@ const AboutUSsections = () => {
           fill={true}
           className="object-cover mix-blend-darken opacity-70"
         />
-        <div className={`relative top-40  ${poppins.variable} font-sans`}>
+        <div className={`relative top-10 md:top-40  ${poppins.variable} font-sans`}>
           <h2 className="text-center text-white text-5xl ">About us</h2>
           <p className="text-center mx-10 text-white text-2xl w-[calc(100%-80px)] mt-5">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas
