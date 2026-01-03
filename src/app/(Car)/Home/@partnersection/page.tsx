@@ -10,7 +10,7 @@ const Partnersection = () => {
       >
         <h2 className="text-center text-3xl mt-5">Some of our partners</h2>
 
-        <div className="flex flex-col md:justify-center items-center gap-10 mt-3">
+        <div className="flex flex-col md:justify-center items-center gap-10 mt-3 md:flex-row">
           <Image
             src="/bmw.svg"
             alt="bmw logo"

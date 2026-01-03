@@ -2,15 +2,26 @@
 
 import { poppins } from "@/font/font";
 import { SliderData } from "@/Type/datas/SliderData";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import Image from "next/image";
 
 const HeroSection = () => {
   const carSliderData = SliderData;
 
+  useGSAP(() => {
+    gsap.from("#hero-section", {
+      opacity: 0,
+      duration: 3,
+      ease: "easeInOut",
+    });
+  }, []);
+
   return (
     <>
       <section
         className={`relative h-135 border md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 ${poppins.variable} font-sans rounded-2xl overflow-hidden mt-3`}
+        id="hero-section"
       >
         <Image
           fill={true}
