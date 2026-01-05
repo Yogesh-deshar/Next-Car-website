@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  outputFileTracingRoot: "c:\\Users\\Dell\\Downloads\\New Car\\car\\Next-Car-website",
   images: {
     remotePatterns: [
       {

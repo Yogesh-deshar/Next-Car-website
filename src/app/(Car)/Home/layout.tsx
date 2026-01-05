@@ -4,7 +4,7 @@ export default function HomeLayout({
   aboutsection,
   someofourcar,
   aboutussection,
-  partnersection
+  partnersection,
 }: Readonly<{
   children: React.ReactNode;
   herosection: React.ReactNode;
@@ -14,15 +14,13 @@ export default function HomeLayout({
   partnersection: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        {children}
-        <div>{herosection}</div>
-        <div>{aboutsection}</div>
-        <div>{someofourcar}</div>
-        <div>{aboutussection}</div>
-        <div>{partnersection}</div>
-      </body>
-    </html>
+    <>
+      {children}
+      <div>{herosection}</div>
+      <div>{aboutsection}</div>
+      <div>{someofourcar}</div>
+      <div>{aboutussection}</div>
+      <div>{partnersection}</div>
+    </>
   );
 }

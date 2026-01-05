@@ -11,6 +11,7 @@ const HeroSection = () => {
 
   useGSAP(() => {
     gsap.from("#hero-section", {
+      y: 50,
       opacity: 0,
       duration: 3,
       ease: "easeInOut",

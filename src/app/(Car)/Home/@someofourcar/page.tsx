@@ -1,13 +1,35 @@
+"use client";
+
 import { poppins } from "@/font/font";
 import React from "react";
 import { CarData } from "@/Type/datas/CarData";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
 const Somecar = () => {
   const cardata = CarData;
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from("#someofourcar-section", {
+      y: 50,
+      opacity: 0,
+      duration: 3,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: "#someofourcar-section",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, []);
+
   return (
     <>
       <section
         className={` md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 border h-[400px] rounded-2xl  mt-3 ${poppins.variable} font-sans bg-gray-100`}
+        id="someofourcar-section"
       >
         <p className="p-3 text-2xl ml-8 mt-5">some of our cars</p>
 
