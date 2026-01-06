@@ -19,6 +19,13 @@ const nextConfig: NextConfig = {
       ,{
         protocol: 'https',
         hostname:'hpe-photos.s3.us-east-2.amazonaws.com'
+      },{
+        protocol: 'https',
+        hostname:'images.pexels.com'
+      },
+      {
+        protocol: 'https',
+        hostname:'di-uploads-pod3.dealerinspire.com'
       }
     ],
   },

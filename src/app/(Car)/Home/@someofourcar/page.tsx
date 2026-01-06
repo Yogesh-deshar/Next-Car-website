@@ -6,6 +6,7 @@ import { CarData } from "@/Type/datas/CarData";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { useRouter } from "next/navigation";
 
 const Somecar = () => {
   const cardata = CarData;
@@ -25,6 +26,11 @@ const Somecar = () => {
     });
   }, []);
 
+  const router = useRouter();
+
+  const clickEvent = (id: number) => {
+    router.push(`/Cardetail/${id}`);
+  };
   return (
     <>
       <section
@@ -44,7 +50,10 @@ const Somecar = () => {
                 />
                 <p className="mt-2 text-lg font-medium ml-3">{data.brand}</p>
                 <p className="text-gray-500 ml-3 text-sm">RS 18000000</p>
-                <button className="mx-10 mt-2 object-center  border border-blue-400 text-blue-400 px-4 py-2 rounded-lg w-60">
+                <button
+                  className="mx-10 mt-2 object-center  border border-blue-400 text-blue-400 px-4 py-2 rounded-lg w-60"
+                  onClick={() => clickEvent(data.id)}
+                >
                   View Details
                 </button>
               </div>

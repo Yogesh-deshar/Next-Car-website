@@ -1,11 +1,32 @@
+"use client";
+
 import { poppins } from "@/font/font";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import Image from "next/image";
 import React from "react";
 
-const page = () => {
+const Aboutsection = () => {
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from("#about", {
+      y: 50,
+      opacity: 0,
+      duration: 3,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        trigger: "#about",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none none",
+      },
+    });
+  }, []);
   return (
     <>
       <section
+        id="about"
         className={`relative bg-gray-100 h-125 md:h-100 md:ml-20 md:mr-20 border lg:ml-40 lg:mr-40 ${poppins.variable} 
           font-sans rounded-2xl overflow-hidden mt-3 flex flex-col md:flex-row items-center lg:gap-35  gap-4`}
       >
@@ -37,4 +58,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Aboutsection;
