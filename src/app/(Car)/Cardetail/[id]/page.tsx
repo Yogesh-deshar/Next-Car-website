@@ -1,19 +1,23 @@
+"use client";
 import { poppins } from "@/font/font";
 import { CarData } from "@/Type/datas/CarData";
-import {
-  AirVent,
-  Fuel,
-  RockingChair,
-  ShoppingBag,
-  ShoppingCart,
-} from "lucide-react";
+import { AirVent, Fuel, RockingChair, ShoppingCart } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
-const page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const data = await params;
-  const cardata = CarData.find((car) => car.id === Number(data.id));
-  if (!cardata) {
+const Page = ({ params }: { params: Promise<{ id: string }> }) => {
+  const cardata = CarData;
+  const data = React.use(params);
+  const cardatas = cardata.find((car) => car.id === Number(data.id));
+
+  const router = useRouter();
+
+  const clickEvent = (id: number) => {
+    router.push(`/Cardetail/${id}`);
+  };
+
+  if (!cardatas) {
     return <div>Car not found</div>;
   }
   //   console.log(cardata);
@@ -25,7 +29,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className="w-[650px]">
           <div className="border border-black w-[650px] aspect-video relative rounded-lg">
             <Image
-              src={cardata.image}
+              src={cardatas.image}
               alt="car image"
               fill
               className="object-cover"
@@ -33,7 +37,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
           <div className="flex gap-2 overflow-x-auto no-scrollbar">
             <Image
-              src={cardata.image}
+              src={cardatas.image}
               alt="car image"
               width={140}
               height={40}
@@ -41,7 +45,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             />
 
             <Image
-              src={cardata.image}
+              src={cardatas.image}
               alt="car image"
               width={140}
               height={40}
@@ -49,7 +53,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             />
 
             <Image
-              src={cardata.image}
+              src={cardatas.image}
               alt="car image"
               width={140}
               height={40}
@@ -57,7 +61,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             />
 
             <Image
-              src={cardata.image}
+              src={cardatas.image}
               alt="car image"
               width={140}
               height={40}
@@ -65,7 +69,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             />
 
             <Image
-              src={cardata.image}
+              src={cardatas.image}
               alt="car image"
               width={140}
               height={40}
@@ -76,8 +80,12 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
         <div>
           <div>
-            <h2 className={`text-4xl ${poppins.className}`}>{cardata.brand}</h2>
-            <p className={`${poppins.className} opacity-60`}>{cardata.model}</p>
+            <h2 className={`text-4xl ${poppins.className}`}>
+              {cardatas.brand}
+            </h2>
+            <p className={`${poppins.className} opacity-60`}>
+              {cardatas.model}
+            </p>
           </div>
 
           <div className={`w-120 ${poppins.className} mt-10`}>
@@ -141,8 +149,39 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </button>
         </div>
       </section>
+
+      <section
+        className={` md:ml-20 md:mr-20 lg:ml-40 lg:mr-40 border h-[400px] rounded-2xl  mt-3 ${poppins.className} font-sans bg-gray-100`}
+        id="someofourcar-section"
+      >
+        <p className="p-3 text-2xl ml-8 mt-5 text-center">You may also like</p>
+
+        <div className="flex gap-5 overflow-x-scroll no-scrollbar p-3">
+          {cardata.map((data, i) => {
+            return (
+              <div key={i} className="w-90 border rounded-lg h-72">
+                <Image
+                  src={data.image}
+                  alt={data.brand}
+                  width={200}
+                  height={100}
+                  className="w-full aspect-[2/1]  object-cover rounded-lg "
+                />
+                <p className="mt-2 text-lg font-medium ml-3">{data.brand}</p>
+                <p className="text-gray-500 ml-3 text-sm">RS 18000000</p>
+                <button
+                  className="mx-10 mt-2 object-center  border border-blue-400 text-blue-400 px-4 py-2 rounded-lg w-60"
+                  onClick={() => clickEvent(data.id)}
+                >
+                  View Details
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 };
 
-export default page;
+export default Page;

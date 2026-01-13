@@ -26,7 +26,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname:'di-uploads-pod3.dealerinspire.com'
-      }
+      },{
+protocol: 'https',
+hostname:"www.cnet.com"      },
+      {
+        protocol: 'https',
+        hostname: 'imgd.aeplcdn.com'      }
     ],
   },
 };
